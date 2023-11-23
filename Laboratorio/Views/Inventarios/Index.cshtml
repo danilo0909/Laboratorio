@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Laboratorio.Models.Inventario>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Inventario</h1>
+
+<p>
+    <a asp-action="Create">Iniciar o Inventario</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID_Cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome_Cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ID_Maquina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome_Maquina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Funciona)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Relatorio)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_Cliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome_Cliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_Maquina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome_Maquina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Funciona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Relatorio)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID_Inventario">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.ID_Inventario">Detalhe</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID_Inventario">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

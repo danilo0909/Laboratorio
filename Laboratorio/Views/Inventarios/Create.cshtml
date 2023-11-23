@@ -1,0 +1,67 @@
+﻿@model Laboratorio.Models.InventarioModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Lançamento</h1>
+
+<h4>Inventario</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label>ID_Cliente</label>
+                <select name="ID_Cliente" class="form-control">
+                    @foreach (var item in Model.ListaCliente)
+                    {
+                        <option value="@item.ID_Cliente">@item.Nome_Cliente</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nome_Cliente" class="control-label"></label>
+                <input asp-for="Nome_Cliente" class="form-control" />
+                <span asp-validation-for="Nome_Cliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>ID_Maquina</label>
+                <select name="ID_Maquina" class="form-control">
+                    @foreach (var item in Model.ListaMaquina)
+                    {
+                        <option value="@item.ID_Maquina">@item.Nome_Maquina</option>
+                    }
+                </select>
+            </div>
+                <div class="form-group">
+                <label asp-for="Nome_Maquina" class="control-label"></label>
+                <input asp-for="Nome_Maquina" class="form-control" />
+                <span asp-validation-for="Nome_Maquina" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Funciona" class="control-label"></label>
+                <input asp-for="Funciona" class="form-control" />
+                <span asp-validation-for="Funciona" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Relatorio" class="control-label"></label>
+                <input asp-for="Relatorio" class="form-control" />
+                <span asp-validation-for="Relatorio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Enviar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar ao Menu</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
